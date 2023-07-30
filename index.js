@@ -51,7 +51,7 @@ app.get("/movies/:id", async function (request,response){
     const movie= await client
     .db("b38wd")
     .collection("movies")
-    .findOne({_id:ObjectId(id)});
+    .findOne({_id:new ObjectId(id)});
     // response.send(movie);
     movie?response.send(movie):response.status(404).send({msg:"Movie not found"});
 });

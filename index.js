@@ -1,5 +1,5 @@
 import express from "express";
-// import { MongoClient, ObjectID } from "mongodb";
+// import { MongoClient, ObjectId } from "mongodb";
 import mongodb from "mongodb";
 const { MongoClient } = mongodb;
 const ObjectId = mongodb.ObjectId;
@@ -51,7 +51,7 @@ app.get("/movies/:id", async function (request,response){
     const movie= await client
     .db("b38wd")
     .collection("movies")
-    .findOne({_id:ObjectID(id)});
+    .findOne({_id:ObjectId(id)});
     // response.send(movie);
     movie?response.send(movie):response.status(404).send({msg:"Movie not found"});
 });
@@ -74,7 +74,7 @@ app.delete("/movies/:id", async function (request,response){
     const result= await client
     .db("b38wd")
     .collection("movies")
-    .deleteOne({_id:ObjectID(id)});
+    .deleteOne({_id:ObjectId(id)});
     response.send(movie);
     result.deletedCount>0 ?response.send({msg:"Movie deleted succesfully"}):response.status(404).send({msg:"Movie not found"});
 });
@@ -86,7 +86,7 @@ app.put("/movies/:id", async function (request,response){
     const movie= await client
     .db("b38wd")
     .collection("movies")
-    .updateOne({_id:ObjectID(id)},{$set: data});
+    .updateOne({_id:ObjectId(id)},{$set: data});
     console.log(movie);
     movie?response.send(movie):response.status(404).send({msg:"Movie not found"});
 });

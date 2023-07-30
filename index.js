@@ -1,8 +1,8 @@
 import express from "express";
-// import { MongoClient, ObjectId } from "mongodb";
-import mongodb from "mongodb";
-const { MongoClient } = mongodb;
-const ObjectId = mongodb.ObjectId;
+import { MongoClient, ObjectId } from "mongodb";
+// import mongodb from "mongodb";
+// const { MongoClient } = mongodb;
+// const ObjectId = mongodb.ObjectId;
 import * as dotenv from "dotenv";
 import cors from "cors";
 

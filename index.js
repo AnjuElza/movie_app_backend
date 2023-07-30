@@ -60,7 +60,7 @@ app.post("/movies",async function(request, response) {
     const result= await client
                         .db("b38wd")
                         .collection("movies")
-                        .insertMany(data);
+                        .insertOne(data);
     response.send(result);
 });
 

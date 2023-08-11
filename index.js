@@ -52,7 +52,7 @@ app.get("/movies/:id", async function (request,response){
     .db("b38wd")
     .collection("movies")
     .findOne({_id:new ObjectId(id)});
-    // response.send(movie);
+    console.log(movie);
     movie?response.send(movie):response.status(404).send({msg:"Movie not found"});
 });
 
@@ -75,7 +75,7 @@ app.delete("/movies/:id", async function (request,response){
     .db("b38wd")
     .collection("movies")
     .deleteOne({_id:new ObjectId(id)});
-    response.send(movie);
+    //response.send(movie);
     result.deletedCount>0 ?response.send({msg:"Movie deleted succesfully"}):response.status(404).send({msg:"Movie not found"});
 });
 

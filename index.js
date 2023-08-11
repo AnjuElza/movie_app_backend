@@ -74,7 +74,7 @@ app.delete("/movies/:id", async function (request,response){
     const result= await client
     .db("b38wd")
     .collection("movies")
-    .deleteOne({_id:ObjectId(id)});
+    .deleteOne({_id:new ObjectId(id)});
     response.send(movie);
     result.deletedCount>0 ?response.send({msg:"Movie deleted succesfully"}):response.status(404).send({msg:"Movie not found"});
 });
@@ -86,7 +86,7 @@ app.put("/movies/:id", async function (request,response){
     const movie= await client
     .db("b38wd")
     .collection("movies")
-    .updateOne({_id:ObjectId(id)},{$set: data});
+    .updateOne({_id:new ObjectId(id)},{$set: data});
     console.log(movie);
     movie?response.send(movie):response.status(404).send({msg:"Movie not found"});
 });
